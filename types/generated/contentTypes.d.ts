@@ -825,6 +825,32 @@ export interface ApiAnnouncementBannerAnnouncementBanner
   };
 }
 
+export interface ApiGameGame extends Schema.CollectionType {
+  collectionName: 'games';
+  info: {
+    singularName: 'game';
+    pluralName: 'games';
+    displayName: 'Games';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::game.game', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::game.game', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiHomepageFeatureHomepageFeature extends Schema.SingleType {
   collectionName: 'homepage_features';
   info: {
@@ -879,6 +905,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::announcement-banner.announcement-banner': ApiAnnouncementBannerAnnouncementBanner;
+      'api::game.game': ApiGameGame;
       'api::homepage-feature.homepage-feature': ApiHomepageFeatureHomepageFeature;
     }
   }
