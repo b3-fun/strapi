@@ -841,6 +841,7 @@ export interface ApiHomepageFeatureHomepageFeature extends Schema.SingleType {
     blurb: Attribute.Text;
     bannerOverride: Attribute.Media;
     videoOverride: Attribute.Media;
+    autoplayVideo: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
