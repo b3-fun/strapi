@@ -1,0 +1,32 @@
+{
+  "kind": "singleType",
+  "collectionName": "announcement_banners",
+  "info": {
+    "singularName": "announcement-banner",
+    "pluralName": "announcement-banners",
+    "displayName": "Announcement Banner"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    },
+    "closable": {
+      "type": "boolean"
+    },
+    "buttonText": {
+      "type": "string"
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "buttonUrl": {
+      "type": "string"
+    }
+  }
+}
