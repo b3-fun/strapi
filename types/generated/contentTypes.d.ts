@@ -897,8 +897,8 @@ export interface ApiHomepageFeatureHomepageFeature extends Schema.SingleType {
   attributes: {
     gameId: Attribute.UID & Attribute.Required;
     blurb: Attribute.Text;
-    bannerOverride: Attribute.Media;
-    videoOverride: Attribute.Media;
+    bannerOverride: Attribute.Media<'images'>;
+    videoOverride: Attribute.Media<'videos'>;
     autoplayVideo: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -935,7 +935,7 @@ export interface ApiNewsArticleNewsArticle extends Schema.CollectionType {
     title: Attribute.String & Attribute.Required;
     blurb: Attribute.Text & Attribute.Required;
     content: Attribute.RichText & Attribute.Required;
-    banner: Attribute.Media & Attribute.Required;
+    banner: Attribute.Media<'images'> & Attribute.Required;
     slug: Attribute.String & Attribute.Required & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
