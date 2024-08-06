@@ -825,6 +825,38 @@ export interface ApiAnnouncementBannerAnnouncementBanner
   };
 }
 
+export interface ApiCopyrightPolicyCopyrightPolicy extends Schema.SingleType {
+  collectionName: 'copyright_policies';
+  info: {
+    singularName: 'copyright-policy';
+    pluralName: 'copyright-policies';
+    displayName: 'Copyright Policy';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    lastModified: Attribute.DateTime & Attribute.Required;
+    content: Attribute.RichText & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::copyright-policy.copyright-policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::copyright-policy.copyright-policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiGameGame extends Schema.CollectionType {
   collectionName: 'games';
   info: {
@@ -886,6 +918,70 @@ export interface ApiHomepageFeatureHomepageFeature extends Schema.SingleType {
   };
 }
 
+export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.SingleType {
+  collectionName: 'privacy_policies';
+  info: {
+    singularName: 'privacy-policy';
+    pluralName: 'privacy-policies';
+    displayName: 'Privacy Policy';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    lastModified: Attribute.DateTime & Attribute.Required;
+    content: Attribute.RichText & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::privacy-policy.privacy-policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::privacy-policy.privacy-policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTermsOfServiceTermsOfService extends Schema.SingleType {
+  collectionName: 'terms_of_services';
+  info: {
+    singularName: 'terms-of-service';
+    pluralName: 'terms-of-services';
+    displayName: 'Terms of Service';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    lastModified: Attribute.DateTime & Attribute.Required;
+    content: Attribute.RichText & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::terms-of-service.terms-of-service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::terms-of-service.terms-of-service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -905,8 +1001,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::announcement-banner.announcement-banner': ApiAnnouncementBannerAnnouncementBanner;
+      'api::copyright-policy.copyright-policy': ApiCopyrightPolicyCopyrightPolicy;
       'api::game.game': ApiGameGame;
       'api::homepage-feature.homepage-feature': ApiHomepageFeatureHomepageFeature;
+      'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
+      'api::terms-of-service.terms-of-service': ApiTermsOfServiceTermsOfService;
     }
   }
 }
