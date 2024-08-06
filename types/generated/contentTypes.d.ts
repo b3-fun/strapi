@@ -924,6 +924,7 @@ export interface ApiNewsArticleNewsArticle extends Schema.CollectionType {
     singularName: 'news-article';
     pluralName: 'news-articles';
     displayName: 'News';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -933,8 +934,9 @@ export interface ApiNewsArticleNewsArticle extends Schema.CollectionType {
     lastModified: Attribute.DateTime;
     title: Attribute.String & Attribute.Required;
     blurb: Attribute.Text & Attribute.Required;
-    content: Attribute.RichText;
+    content: Attribute.RichText & Attribute.Required;
     banner: Attribute.Media & Attribute.Required;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
