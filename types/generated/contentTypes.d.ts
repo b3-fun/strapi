@@ -918,6 +918,41 @@ export interface ApiHomepageFeatureHomepageFeature extends Schema.SingleType {
   };
 }
 
+export interface ApiNewsArticleNewsArticle extends Schema.CollectionType {
+  collectionName: 'news_articles';
+  info: {
+    singularName: 'news-article';
+    pluralName: 'news-articles';
+    displayName: 'News';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    publishedDate: Attribute.DateTime & Attribute.Required;
+    lastModified: Attribute.DateTime;
+    title: Attribute.String & Attribute.Required;
+    blurb: Attribute.Text & Attribute.Required;
+    content: Attribute.RichText;
+    banner: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::news-article.news-article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::news-article.news-article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.SingleType {
   collectionName: 'privacy_policies';
   info: {
@@ -1004,6 +1039,7 @@ declare module '@strapi/types' {
       'api::copyright-policy.copyright-policy': ApiCopyrightPolicyCopyrightPolicy;
       'api::game.game': ApiGameGame;
       'api::homepage-feature.homepage-feature': ApiHomepageFeatureHomepageFeature;
+      'api::news-article.news-article': ApiNewsArticleNewsArticle;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::terms-of-service.terms-of-service': ApiTermsOfServiceTermsOfService;
     }
