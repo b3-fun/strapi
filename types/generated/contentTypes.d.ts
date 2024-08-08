@@ -1019,6 +1019,55 @@ export interface ApiTermsOfServiceTermsOfService extends Schema.SingleType {
   };
 }
 
+export interface ApiXpTaskXpTask extends Schema.CollectionType {
+  collectionName: 'xp_tasks';
+  info: {
+    singularName: 'xp-task';
+    pluralName: 'xp-tasks';
+    displayName: 'XP Tasks';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    visible: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    enabled: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.String;
+    taskId: Attribute.UID & Attribute.Required;
+    banner: Attribute.Media<'images'>;
+    limitPerUser: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      > &
+      Attribute.DefaultTo<1>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::xp-task.xp-task',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::xp-task.xp-task',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1044,6 +1093,7 @@ declare module '@strapi/types' {
       'api::news-article.news-article': ApiNewsArticleNewsArticle;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::terms-of-service.terms-of-service': ApiTermsOfServiceTermsOfService;
+      'api::xp-task.xp-task': ApiXpTaskXpTask;
     }
   }
 }

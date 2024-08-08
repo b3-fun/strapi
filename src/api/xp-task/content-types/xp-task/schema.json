@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "xp_tasks",
+  "info": {
+    "singularName": "xp-task",
+    "pluralName": "xp-tasks",
+    "displayName": "XP Tasks",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "visible": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "taskId": {
+      "type": "uid",
+      "required": true
+    },
+    "banner": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "limitPerUser": {
+      "type": "integer",
+      "required": true,
+      "min": 1,
+      "default": 1
+    }
+  }
+}
