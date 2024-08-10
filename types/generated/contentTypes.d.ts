@@ -1050,6 +1050,7 @@ export interface ApiXpTaskXpTask extends Schema.CollectionType {
         number
       > &
       Attribute.DefaultTo<1>;
+    numXP: Attribute.Integer & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
