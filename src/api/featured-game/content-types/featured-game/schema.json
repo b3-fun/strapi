@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "featured_games",
+  "info": {
+    "singularName": "featured-game",
+    "pluralName": "featured-games",
+    "displayName": "Featured Games"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "gameId": {
+      "type": "uid",
+      "required": true
+    },
+    "recommended": {
+      "type": "boolean",
+      "required": false
+    },
+    "editorBlurb": {
+      "type": "text"
+    }
+  }
+}

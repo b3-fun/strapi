@@ -788,6 +788,104 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface PluginMenusMenu extends Schema.CollectionType {
+  collectionName: 'menus';
+  info: {
+    name: 'Menu';
+    displayName: 'Menu';
+    singularName: 'menu';
+    pluralName: 'menus';
+    tableName: 'menus';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'plugin::menus.menu', 'title'> & Attribute.Required;
+    items: Attribute.Relation<
+      'plugin::menus.menu',
+      'oneToMany',
+      'plugin::menus.menu-item'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::menus.menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::menus.menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginMenusMenuItem extends Schema.CollectionType {
+  collectionName: 'menu_items';
+  info: {
+    name: 'MenuItem';
+    displayName: 'Menu Item';
+    singularName: 'menu-item';
+    pluralName: 'menu-items';
+    tableName: 'menu_items';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    order: Attribute.Integer;
+    title: Attribute.String & Attribute.Required;
+    url: Attribute.String;
+    target: Attribute.Enumeration<['_blank', '_parent', '_self', '_top']>;
+    root_menu: Attribute.Relation<
+      'plugin::menus.menu-item',
+      'manyToOne',
+      'plugin::menus.menu'
+    > &
+      Attribute.Required;
+    parent: Attribute.Relation<
+      'plugin::menus.menu-item',
+      'oneToOne',
+      'plugin::menus.menu-item'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::menus.menu-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::menus.menu-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiAnnouncementBannerAnnouncementBanner
   extends Schema.SingleType {
   collectionName: 'announcement_banners';
@@ -850,6 +948,38 @@ export interface ApiCopyrightPolicyCopyrightPolicy extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::copyright-policy.copyright-policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFeaturedGameFeaturedGame extends Schema.CollectionType {
+  collectionName: 'featured_games';
+  info: {
+    singularName: 'featured-game';
+    pluralName: 'featured-games';
+    displayName: 'Featured Games';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    gameId: Attribute.UID & Attribute.Required;
+    recommended: Attribute.Boolean;
+    editorBlurb: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::featured-game.featured-game',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::featured-game.featured-game',
       'oneToOne',
       'admin::user'
     > &
@@ -1087,8 +1217,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'plugin::menus.menu': PluginMenusMenu;
+      'plugin::menus.menu-item': PluginMenusMenuItem;
       'api::announcement-banner.announcement-banner': ApiAnnouncementBannerAnnouncementBanner;
       'api::copyright-policy.copyright-policy': ApiCopyrightPolicyCopyrightPolicy;
+      'api::featured-game.featured-game': ApiFeaturedGameFeaturedGame;
       'api::game.game': ApiGameGame;
       'api::homepage-feature.homepage-feature': ApiHomepageFeatureHomepageFeature;
       'api::news-article.news-article': ApiNewsArticleNewsArticle;
