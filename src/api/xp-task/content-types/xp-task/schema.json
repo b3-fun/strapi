@@ -50,6 +50,9 @@
     "numXP": {
       "type": "integer",
       "required": true
+    },
+    "taskGroup": {
+      "type": "string"
     }
   }
 }
