@@ -52,6 +52,13 @@
       "required": true
     },
     "taskGroup": {
+      "type": "string",
+      "required": true
+    },
+    "linkText": {
+      "type": "string"
+    },
+    "linkUrl": {
       "type": "string"
     }
   }

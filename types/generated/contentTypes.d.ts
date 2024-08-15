@@ -1181,7 +1181,9 @@ export interface ApiXpTaskXpTask extends Schema.CollectionType {
       > &
       Attribute.DefaultTo<1>;
     numXP: Attribute.Integer & Attribute.Required;
-    taskGroup: Attribute.String;
+    taskGroup: Attribute.String & Attribute.Required;
+    linkText: Attribute.String;
+    linkUrl: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
