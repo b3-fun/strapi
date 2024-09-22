@@ -923,6 +923,43 @@ export interface ApiAnnouncementBannerAnnouncementBanner
   };
 }
 
+export interface ApiChangelogChangelog extends Schema.CollectionType {
+  collectionName: 'changelogs';
+  info: {
+    singularName: 'changelog';
+    pluralName: 'changelogs';
+    displayName: 'changelog';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    visible: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
+    date: Attribute.DateTime & Attribute.Required & Attribute.Unique;
+    media: Attribute.Media<'images' | 'videos', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::changelog.changelog',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::changelog.changelog',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCopyrightPolicyCopyrightPolicy extends Schema.SingleType {
   collectionName: 'copyright_policies';
   info: {
@@ -1223,6 +1260,7 @@ declare module '@strapi/types' {
       'plugin::menus.menu': PluginMenusMenu;
       'plugin::menus.menu-item': PluginMenusMenuItem;
       'api::announcement-banner.announcement-banner': ApiAnnouncementBannerAnnouncementBanner;
+      'api::changelog.changelog': ApiChangelogChangelog;
       'api::copyright-policy.copyright-policy': ApiCopyrightPolicyCopyrightPolicy;
       'api::featured-game.featured-game': ApiFeaturedGameFeaturedGame;
       'api::game.game': ApiGameGame;
