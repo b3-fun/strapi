@@ -60,6 +60,12 @@
     },
     "linkUrl": {
       "type": "string"
+    },
+    "taskTarget": {
+      "type": "integer"
+    },
+    "contractAddress": {
+      "type": "string"
     }
   }
 }
