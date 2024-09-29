@@ -64,6 +64,9 @@
     "taskTarget": {
       "type": "integer"
     },
+    "targetType": {
+      "type": "string"
+    },
     "contractAddress": {
       "type": "string"
     }

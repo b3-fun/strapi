@@ -1223,6 +1223,7 @@ export interface ApiXpTaskXpTask extends Schema.CollectionType {
     linkUrl: Attribute.String;
     contractAddress: Attribute.String;
     taskTarget: Attribute.Integer;
+    targetType: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
