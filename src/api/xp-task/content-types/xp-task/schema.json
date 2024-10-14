@@ -37,9 +37,7 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "limitPerUser": {
       "type": "integer",
@@ -62,7 +60,9 @@
       "type": "string"
     },
     "taskTarget": {
-      "type": "integer"
+      "type": "float",
+      "required": true,
+      "default": 1
     },
     "targetType": {
       "type": "string"
