@@ -30,7 +30,7 @@ When developing locally this Strapi template will connect to the Postgres server
 - Start Strapi for development with `railway run yarn run develop` or `railway run npm run develop`
     - This command will run Strapi in development mode with the service variables available locally
 - Open your browser to `http://127.0.0.1:1337/admin`
-
+a
 ## 📝 Notes
 
 - After your app is deployed, visit the `/admin` endpoint to create your admin user.

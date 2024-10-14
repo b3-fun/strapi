@@ -64,10 +64,10 @@
       "required": true,
       "default": 1
     },
-    "targetType": {
+    "contractAddress": {
       "type": "string"
     },
-    "contractAddress": {
+    "resetInterval": {
       "type": "string"
     }
   }
