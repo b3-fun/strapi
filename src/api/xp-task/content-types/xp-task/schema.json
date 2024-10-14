@@ -67,8 +67,8 @@
     "contractAddress": {
       "type": "string"
     },
-    "resetInterval": {
-      "type": "string"
+    "resetIntervalInHours": {
+      "type": "integer"
     }
   }
 }
