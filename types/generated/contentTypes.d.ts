@@ -1085,6 +1085,44 @@ export interface ApiHomepageFeatureHomepageFeature extends Schema.SingleType {
   };
 }
 
+export interface ApiHomepageFeaturedCarouselHomepageFeaturedCarousel
+  extends Schema.CollectionType {
+  collectionName: 'homepage_featured_carousels';
+  info: {
+    singularName: 'homepage-featured-carousel';
+    pluralName: 'homepage-featured-carousels';
+    displayName: 'Homepage Featured Carousel';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    visible: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    titleOverride: Attribute.String;
+    blurbOverride: Attribute.String;
+    bannerOverride: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    videoOverride: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    autoplayVideo: Attribute.Boolean & Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::homepage-featured-carousel.homepage-featured-carousel',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::homepage-featured-carousel.homepage-featured-carousel',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNewsArticleNewsArticle extends Schema.CollectionType {
   collectionName: 'news_articles';
   info: {
@@ -1268,6 +1306,7 @@ declare module '@strapi/types' {
       'api::featured-game.featured-game': ApiFeaturedGameFeaturedGame;
       'api::game.game': ApiGameGame;
       'api::homepage-feature.homepage-feature': ApiHomepageFeatureHomepageFeature;
+      'api::homepage-featured-carousel.homepage-featured-carousel': ApiHomepageFeaturedCarouselHomepageFeaturedCarousel;
       'api::news-article.news-article': ApiNewsArticleNewsArticle;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::terms-of-service.terms-of-service': ApiTermsOfServiceTermsOfService;
