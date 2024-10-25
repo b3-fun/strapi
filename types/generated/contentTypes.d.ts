@@ -1050,41 +1050,6 @@ export interface ApiGameGame extends Schema.CollectionType {
   };
 }
 
-export interface ApiHomepageFeatureHomepageFeature extends Schema.SingleType {
-  collectionName: 'homepage_features';
-  info: {
-    singularName: 'homepage-feature';
-    pluralName: 'homepage-features';
-    displayName: 'Homepage Feature';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    gameId: Attribute.UID & Attribute.Required;
-    blurb: Attribute.Text;
-    bannerOverride: Attribute.Media<'images'>;
-    videoOverride: Attribute.Media<'videos'>;
-    autoplayVideo: Attribute.Boolean;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::homepage-feature.homepage-feature',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::homepage-feature.homepage-feature',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiHomepageFeaturedCarouselHomepageFeaturedCarousel
   extends Schema.CollectionType {
   collectionName: 'homepage_featured_carousels';
@@ -1305,7 +1270,6 @@ declare module '@strapi/types' {
       'api::copyright-policy.copyright-policy': ApiCopyrightPolicyCopyrightPolicy;
       'api::featured-game.featured-game': ApiFeaturedGameFeaturedGame;
       'api::game.game': ApiGameGame;
-      'api::homepage-feature.homepage-feature': ApiHomepageFeatureHomepageFeature;
       'api::homepage-featured-carousel.homepage-featured-carousel': ApiHomepageFeaturedCarouselHomepageFeaturedCarousel;
       'api::news-article.news-article': ApiNewsArticleNewsArticle;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
