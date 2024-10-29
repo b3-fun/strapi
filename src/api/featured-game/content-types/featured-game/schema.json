@@ -4,23 +4,26 @@
   "info": {
     "singularName": "featured-game",
     "pluralName": "featured-games",
-    "displayName": "Featured Games"
+    "displayName": "Featured Games",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "gameId": {
-      "type": "uid",
-      "required": true
-    },
     "recommended": {
       "type": "boolean",
       "required": false
     },
     "editorBlurb": {
       "type": "text"
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "regex": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
     }
   }
 }

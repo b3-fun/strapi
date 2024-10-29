@@ -998,14 +998,15 @@ export interface ApiFeaturedGameFeaturedGame extends Schema.CollectionType {
     singularName: 'featured-game';
     pluralName: 'featured-games';
     displayName: 'Featured Games';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    gameId: Attribute.UID & Attribute.Required;
     recommended: Attribute.Boolean;
     editorBlurb: Attribute.Text;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
