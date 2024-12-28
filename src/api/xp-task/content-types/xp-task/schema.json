@@ -67,6 +67,9 @@
     "contractAddress": {
       "type": "string"
     },
+    "tokenId": {
+      "type": "string"
+    },
     "resetIntervalInHours": {
       "type": "integer"
     }
