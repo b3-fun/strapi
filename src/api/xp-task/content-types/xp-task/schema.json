@@ -53,6 +53,12 @@
       "type": "string",
       "required": true
     },
+    "taskGroupType": {
+      "type": "enumeration",
+      "enum": ["progressive", "independent"],
+      "required": true,
+      "default": "progressive"
+    },
     "linkText": {
       "type": "string"
     },

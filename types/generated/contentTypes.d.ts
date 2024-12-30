@@ -1223,6 +1223,9 @@ export interface ApiXpTaskXpTask extends Schema.CollectionType {
       Attribute.DefaultTo<1>;
     numXP: Attribute.Integer & Attribute.Required;
     taskGroup: Attribute.String & Attribute.Required;
+    taskGroupType: Attribute.Enumeration<['progressive', 'independent']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'progressive'>;
     linkText: Attribute.String;
     linkUrl: Attribute.String;
     taskTarget: Attribute.Float & Attribute.Required & Attribute.DefaultTo<1>;
