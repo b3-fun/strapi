@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "b3_ecosystem_posts",
+  "info": {
+    "singularName": "b3-ecosystem-post",
+    "pluralName": "b3-ecosystem-posts",
+    "displayName": "B3 Ecosystem Posts",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "banner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "visible": {
+      "type": "boolean",
+      "required": true
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "blurb": {
+      "type": "text"
+    },
+    "buttonCta": {
+      "type": "string"
+    },
+    "buttonLink": {
+      "type": "string"
+    },
+    "bannerHover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

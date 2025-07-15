@@ -923,6 +923,84 @@ export interface ApiAnnouncementBannerAnnouncementBanner
   };
 }
 
+export interface ApiB3EcosystemPostB3EcosystemPost
+  extends Schema.CollectionType {
+  collectionName: 'b3_ecosystem_posts';
+  info: {
+    singularName: 'b3-ecosystem-post';
+    pluralName: 'b3-ecosystem-posts';
+    displayName: 'B3 Ecosystem Posts';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    banner: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    date: Attribute.DateTime;
+    visible: Attribute.Boolean & Attribute.Required;
+    content: Attribute.RichText;
+    blurb: Attribute.Text;
+    buttonCta: Attribute.String;
+    buttonLink: Attribute.String;
+    bannerHover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::b3-ecosystem-post.b3-ecosystem-post',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::b3-ecosystem-post.b3-ecosystem-post',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiB3PlayHomepageFeaturedCarouselB3PlayHomepageFeaturedCarousel
+  extends Schema.CollectionType {
+  collectionName: 'b3_play_homepage_featured_carousels';
+  info: {
+    singularName: 'b3-play-homepage-featured-carousel';
+    pluralName: 'b3-play-homepage-featured-carousels';
+    displayName: 'B3 Play Homepage Featured Carousel';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    visible: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    titleOverride: Attribute.String;
+    blurbOverride: Attribute.String;
+    bannerOverride: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    videoOverride: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    autoplayVideo: Attribute.Boolean & Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::b3-play-homepage-featured-carousel.b3-play-homepage-featured-carousel',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::b3-play-homepage-featured-carousel.b3-play-homepage-featured-carousel',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiChangelogChangelog extends Schema.CollectionType {
   collectionName: 'changelogs';
   info: {
@@ -1025,32 +1103,6 @@ export interface ApiFeaturedGameFeaturedGame extends Schema.CollectionType {
   };
 }
 
-export interface ApiGameGame extends Schema.CollectionType {
-  collectionName: 'games';
-  info: {
-    singularName: 'game';
-    pluralName: 'games';
-    displayName: 'Games';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 60;
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::game.game', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::game.game', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface ApiHomepageFeaturedCarouselHomepageFeaturedCarousel
   extends Schema.CollectionType {
   collectionName: 'homepage_featured_carousels';
@@ -1082,43 +1134,6 @@ export interface ApiHomepageFeaturedCarouselHomepageFeaturedCarousel
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::homepage-featured-carousel.homepage-featured-carousel',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiNewsArticleNewsArticle extends Schema.CollectionType {
-  collectionName: 'news_articles';
-  info: {
-    singularName: 'news-article';
-    pluralName: 'news-articles';
-    displayName: 'News';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    publishedDate: Attribute.DateTime & Attribute.Required;
-    lastModified: Attribute.DateTime;
-    title: Attribute.String & Attribute.Required;
-    blurb: Attribute.Text & Attribute.Required;
-    content: Attribute.RichText & Attribute.Required;
-    banner: Attribute.Media<'images'> & Attribute.Required;
-    slug: Attribute.String & Attribute.Required & Attribute.Unique;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::news-article.news-article',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::news-article.news-article',
       'oneToOne',
       'admin::user'
     > &
@@ -1271,12 +1286,12 @@ declare module '@strapi/types' {
       'plugin::menus.menu': PluginMenusMenu;
       'plugin::menus.menu-item': PluginMenusMenuItem;
       'api::announcement-banner.announcement-banner': ApiAnnouncementBannerAnnouncementBanner;
+      'api::b3-ecosystem-post.b3-ecosystem-post': ApiB3EcosystemPostB3EcosystemPost;
+      'api::b3-play-homepage-featured-carousel.b3-play-homepage-featured-carousel': ApiB3PlayHomepageFeaturedCarouselB3PlayHomepageFeaturedCarousel;
       'api::changelog.changelog': ApiChangelogChangelog;
       'api::copyright-policy.copyright-policy': ApiCopyrightPolicyCopyrightPolicy;
       'api::featured-game.featured-game': ApiFeaturedGameFeaturedGame;
-      'api::game.game': ApiGameGame;
       'api::homepage-featured-carousel.homepage-featured-carousel': ApiHomepageFeaturedCarouselHomepageFeaturedCarousel;
-      'api::news-article.news-article': ApiNewsArticleNewsArticle;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::terms-of-service.terms-of-service': ApiTermsOfServiceTermsOfService;
       'api::xp-task.xp-task': ApiXpTaskXpTask;
