@@ -1141,6 +1141,44 @@ export interface ApiHomepageFeaturedCarouselHomepageFeaturedCarousel
   };
 }
 
+export interface ApiHypeduelFeaturedCarouselHypeduelFeaturedCarousel
+  extends Schema.CollectionType {
+  collectionName: 'hypeduel_featured_carousels';
+  info: {
+    singularName: 'hypeduel-featured-carousel';
+    pluralName: 'hypeduel-featured-carousels';
+    displayName: 'Hypeduel Featured Carousel';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    visible: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    titleOverride: Attribute.String;
+    blurbOverride: Attribute.String;
+    bannerOverride: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    videoOverride: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    autoplayVideo: Attribute.Boolean & Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::hypeduel-featured-carousel.hypeduel-featured-carousel',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::hypeduel-featured-carousel.hypeduel-featured-carousel',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.SingleType {
   collectionName: 'privacy_policies';
   info: {
@@ -1292,6 +1330,7 @@ declare module '@strapi/types' {
       'api::copyright-policy.copyright-policy': ApiCopyrightPolicyCopyrightPolicy;
       'api::featured-game.featured-game': ApiFeaturedGameFeaturedGame;
       'api::homepage-featured-carousel.homepage-featured-carousel': ApiHomepageFeaturedCarouselHomepageFeaturedCarousel;
+      'api::hypeduel-featured-carousel.hypeduel-featured-carousel': ApiHypeduelFeaturedCarouselHypeduelFeaturedCarousel;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::terms-of-service.terms-of-service': ApiTermsOfServiceTermsOfService;
       'api::xp-task.xp-task': ApiXpTaskXpTask;

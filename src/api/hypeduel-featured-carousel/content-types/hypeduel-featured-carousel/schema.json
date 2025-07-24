@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hypeduel_featured_carousels",
+  "info": {
+    "singularName": "hypeduel-featured-carousel",
+    "pluralName": "hypeduel-featured-carousels",
+    "displayName": "Hypeduel Featured Carousel",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "visible": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "titleOverride": {
+      "type": "string"
+    },
+    "blurbOverride": {
+      "type": "string"
+    },
+    "bannerOverride": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "videoOverride": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "autoplayVideo": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+} 
